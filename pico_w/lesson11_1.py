@@ -45,7 +45,7 @@ while True:
                 currentTime = f'{times_tuple[0]}-{times_tuple[1]}-{times_tuple[2]} {times_tuple[3]}:{times_tuple[4]}:{times_tuple[5]}'
                 print(currentTime)
                 is_press = False
-                url_str = 'http://https://openapi-test-iqwh.onrender.com/pico_w/{currentTime}?address=chicken_KFC&celsius={celsius}&light={light}'
+                url_str = 'https://openapi-test-iqwh.onrender.com/pico_w/{currentTime}?address=chicken_KFC&celsius={celsius}&light={light}'
                 try:
                     response = urequests.get(url_str)
                     pass
