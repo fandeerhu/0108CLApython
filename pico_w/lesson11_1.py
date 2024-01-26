@@ -1,8 +1,7 @@
-from machine import Pin
+from machine import Pin, ADC
 from tools import connect,reconnect
 import time
 import urequests
-from machine import Pin, ADC
 
 red_led = Pin(15,mode=Pin.OUT)
 btn = Pin(14,mode=Pin.PULL_DOWN)
@@ -38,14 +37,14 @@ while True:
         time.sleep_ms(50)
         if btn.value() == False:
             if is_press == True:     
-                print('release')
-                times_tuple = time.localtime()
-                celsius = getTemperature()
-                light = getLightValue()
-                currentTime = f'{times_tuple[0]}-{times_tuple[1]}-{times_tuple[2]} {times_tuple[3]}:{times_tuple[4]}:{times_tuple[5]}'
-                print(currentTime)
+                print('release')                
+                currentTime = getCurrentTime()
+                temperature= getTemperature()
+                light=getLightValue()
+                
                 is_press = False
-                url_str = 'https://openapi-test-iqwh.onrender.com/pico_w/{currentTime}?address=chicken_KFC&celsius={celsius}&light={light}'
+                
+                url_str = f'https://openapi-test-iqwh.onrender.com/pico_w/{currentTime}?address=chicken_KFC&celsius={temperature}&light={light}'
                 try:
                     response = urequests.get(url_str)
                     pass
@@ -62,3 +61,7 @@ while True:
             
         
             red_led.value(0)
+        
+    
+        
+    
