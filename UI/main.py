@@ -3,9 +3,9 @@ import pandas as pd
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 
-
+url = 'https://openapi-test-iqwh.onrender.com/pico_w/?count=10'
+#自動reload頁面每10秒
 st_autorefresh(interval=10000, limit=100, key="fizzbuzzcounter")
-url = 'https://openapi-test-6vnu.onrender.com/pico_w/?count=5'
 
 r = requests.get(url=url)
 
